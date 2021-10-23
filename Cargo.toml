@@ -7,6 +7,8 @@ description = "A quick and dirty regex helping tool"
 
 repository = "https://github.com/skillzaa/qndr.git"
 homepage = "https://github.com/skillzaa/qndr.git"
+documentation = "https://docs.rs/qndr/"
+
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 
