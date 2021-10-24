@@ -14,6 +14,5 @@ impl Qndr for Abc {}
 
 fn main(){
 let a = Abc::new();
-let r = a.numbers_with_symbols(&String::from("abc!dew@s"),&String::from("!@#"));
-        
+a.ends_with_number(&"zdews5".to_string());        
 }

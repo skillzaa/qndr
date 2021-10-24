@@ -29,7 +29,7 @@ pub trait Qndr {
                 false=> return None,
             }
         }
-    Some(true)    
+        Some(true)    
     }
 
     //=============// Get //==================
@@ -80,7 +80,15 @@ pub trait Qndr {
         non_alphabets    
     }
     fn get_non_numbers(&self,sample:&String )->String{
-        todo!();    
+        let mut numbers = String::from(""); 
+        for c in sample.chars() { 
+            let r = !c.is_numeric();
+            match r {
+                true=> {numbers.push(c)},
+                false=> {},
+            }
+        }
+        numbers    
     }
     fn get_non_alphanumeric(&self,sample:&String )->String{
         let mut non_alphanumeric = String::from(""); 
@@ -108,8 +116,11 @@ pub trait Qndr {
         (&non_alpha,&allowed_symbols);
         result
     }
-    fn alphanumeric_with_symbols(&self , sample:&String )->Option<bool>{
-        todo!();
+    fn alphanumeric_with_symbols(&self , sample:&String ,allowed_symbols:&String  )->Option<bool>{
+        let non_alpha_num = self.get_non_alphanumeric(&sample);
+        let result = self.check_string_for_allowed_chars
+        (&non_alpha_num,&allowed_symbols);
+        result
     }  
     //=============// Caps //==================    
     fn no_caps(&self , sample:String )->Option<bool>{
@@ -121,29 +132,35 @@ pub trait Qndr {
 
     //=============// Begins and Ends //================== 
     
-    fn begins_with(&self , sample:&String,end:char )->Option<bool>{
+    fn begins_with(&self , sample:&String,begin_char:char )->Option<bool>{
         todo!();
     }
-    fn ends_with(&self , sample:&String,end:char )->Option<bool>{
+    fn ends_with(&self , sample:&String,end_char:char )->Option<bool>{
         todo!();
     }
     fn begins_with_number(&self , sample:&String )->Option<bool>{
-        todo!();
+        let first:char = sample.chars().nth(0).unwrap();
+        if first.is_numeric() { return Some(true) } else { return None };
     }
-    fn ends_with_number(&self , sample:String )->Option<bool>{
-        todo!();
+    fn ends_with_number(&self , sample:&String )->Option<bool>{
+        let last:char = sample.chars().rev().nth(0).unwrap();
+        if last.is_numeric() { return Some(true) } else { return None };
     }
-    fn begins_with_alphabet(&self , sample:String )->Option<bool>{
-        todo!();
+    fn begins_with_alphabetic(&self , sample:&String )->Option<bool>{
+        let first:char = sample.chars().nth(0).unwrap();
+        if first.is_alphabetic() { return Some(true) } else { return None };
     }
-    fn ends_with_alphabet(&self , sample:&String )->Option<bool>{
-        todo!();
+    fn ends_with_alphabetic(&self , sample:&String )->Option<bool>{
+        let last:char = sample.chars().rev().nth(0).unwrap();
+        if last.is_alphabetic() { return Some(true) } else { return None };
     }
     fn begins_with_alphanumeric(&self , sample:&String )->Option<bool>{
-        todo!();
+        let first:char = sample.chars().nth(0).unwrap();
+        if first.is_alphanumeric() { return Some(true) } else { return None };
     }
     fn ends_with_alphanumeric(&self , sample:&String )->Option<bool>{
-        todo!();
+        let last:char = sample.chars().rev().nth(0).unwrap();
+        if last.is_alphanumeric() { return Some(true) } else { return None };
     }
        
     //=============// Misc //================== 
@@ -154,9 +171,9 @@ pub trait Qndr {
             }
         chars
     }
-    fn is_valid_url(&self , sample:&String )->Option<bool>{
-        todo!();
-    }
+    // fn is_valid_url(&self , sample:&String )->Option<bool>{
+    //     todo!();
+    // }
     fn check_string_for_allowed_chars(&self,data:&String,allowed_chars:&String)->Option<bool>{
         for i in data.chars(){
                 match allowed_chars.contains(i){
@@ -175,6 +192,9 @@ pub trait Qndr {
             }
         }
         result
+    }
+    fn sub_string (&self,sample:String,start:usize,len:usize){
+
     }
     
   

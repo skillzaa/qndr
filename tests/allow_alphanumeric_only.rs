@@ -17,7 +17,7 @@ impl Qndr for Abc {}
 #[test]
 fn a() {
 let a = Abc::new();
-let r = a.allow_alphanumeric_only(&String::from("1234567890"));
+let r = a.allow_alphanumeric_only(&String::from("abcdefghijlkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRESTUVWXYZ0123456789"));
     assert_eq!(true,r.unwrap());
 }
 #[cfg(test)]
@@ -63,8 +63,8 @@ assert_eq!(None,r);
 }
 #[test]
 fn g() {
-let a = Abc::new();
-let r = a.allow_alphanumeric_only(&String::from("abcdefghijlkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRESTUVWXYZ0123456789"));
+let a = Abc::new();//empty
+let r = a.allow_alphanumeric_only(&String::from(""));
 assert_eq!(true,r.unwrap());
 }
 #[test]

@@ -58,7 +58,7 @@ assert_eq!(None,r);
 
 fn f() {
 let a = Abc::new();
-let r = a.allow_alphabets_only(&String::from("_"));
+let r = a.allow_alphabets_only(&String::from("0123456789"));
 assert_eq!(None,r);
 }
 #[test]
