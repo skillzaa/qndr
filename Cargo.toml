@@ -1,6 +1,6 @@
 [package]
 name = "qndr"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2021"
 authors = ["bilal <skillzaa.com@gmail.com>"]
 description = "A quick and dirty regex helping tool"
@@ -12,11 +12,6 @@ documentation = "https://docs.rs/qndr/"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 doctest = true
-
-[lib]
-crate-type = ["cdylib"]
-path = "src/lib.rs"
-bench = false
 
 
 [dependencies]
