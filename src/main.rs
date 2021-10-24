@@ -1,12 +1,19 @@
-mod qndr;
 use qndr::Qndr;
+struct Abc {
+    name:String,
+}
 
-impl Qndr for f64 { }
+impl Abc {
+    fn new()->Abc{
+        Abc {
+            name: String::from("bbb"),
+        }
+    }
+}
+impl Qndr for Abc {}
 
-fn main() {
-    let m:f64 = 4.0;
-
-let r = m.alphabets_only(String::from("alphabetsonly"));
-println!("Result is {}",r);
-
+fn main(){
+let a = Abc::new();
+let r = a.numbers_with_symbols(&String::from("abc!dew@s"),&String::from("!@#"));
+        
 }

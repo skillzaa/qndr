@@ -11,5 +11,5 @@ documentation = "https://docs.rs/qndr/"
 
 license = "MIT OR Apache-2.0"
 readme = "README.md"
-
+doctest = true
 [dependencies]
