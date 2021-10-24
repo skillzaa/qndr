@@ -132,33 +132,35 @@ pub trait Qndr {
 
     //=============// Begins and Ends //================== 
     
-    fn begins_with(&self , sample:&String,begin_char:char )->Option<bool>{
-        todo!();
+    fn begin_with(&self , sample:&String,begin_char:char )->Option<bool>{
+        let first:char = sample.chars().nth(0).unwrap();
+        if first == begin_char { return Some(true)}else{return None}
     }
-    fn ends_with(&self , sample:&String,end_char:char )->Option<bool>{
-        todo!();
+    fn end_with(&self , sample:&String,end_char:char )->Option<bool>{
+        let last:char = sample.chars().rev().nth(0).unwrap();
+        if last == end_char {return Some(true)}else{return None}
     }
-    fn begins_with_number(&self , sample:&String )->Option<bool>{
+    fn begin_with_number(&self , sample:&String )->Option<bool>{
         let first:char = sample.chars().nth(0).unwrap();
         if first.is_numeric() { return Some(true) } else { return None };
     }
-    fn ends_with_number(&self , sample:&String )->Option<bool>{
+    fn end_with_number(&self , sample:&String )->Option<bool>{
         let last:char = sample.chars().rev().nth(0).unwrap();
         if last.is_numeric() { return Some(true) } else { return None };
     }
-    fn begins_with_alphabetic(&self , sample:&String )->Option<bool>{
+    fn begin_with_alphabet(&self , sample:&String )->Option<bool>{
         let first:char = sample.chars().nth(0).unwrap();
         if first.is_alphabetic() { return Some(true) } else { return None };
     }
-    fn ends_with_alphabetic(&self , sample:&String )->Option<bool>{
+    fn end_with_alphabet(&self , sample:&String )->Option<bool>{
         let last:char = sample.chars().rev().nth(0).unwrap();
         if last.is_alphabetic() { return Some(true) } else { return None };
     }
-    fn begins_with_alphanumeric(&self , sample:&String )->Option<bool>{
+    fn begin_with_alphanumeric(&self , sample:&String )->Option<bool>{
         let first:char = sample.chars().nth(0).unwrap();
         if first.is_alphanumeric() { return Some(true) } else { return None };
     }
-    fn ends_with_alphanumeric(&self , sample:&String )->Option<bool>{
+    fn end_with_alphanumeric(&self , sample:&String )->Option<bool>{
         let last:char = sample.chars().rev().nth(0).unwrap();
         if last.is_alphanumeric() { return Some(true) } else { return None };
     }
@@ -193,9 +195,7 @@ pub trait Qndr {
         }
         result
     }
-    fn sub_string (&self,sample:String,start:usize,len:usize){
 
-    }
     
   
 

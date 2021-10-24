@@ -14,5 +14,4 @@ impl Qndr for Abc {}
 
 fn main(){
 let a = Abc::new();
-a.ends_with_number(&"zdews5".to_string());        
 }
