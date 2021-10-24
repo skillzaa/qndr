@@ -3,6 +3,7 @@
 >Simple and useful methods for simple String / Regex operations.
 ---
 **QNDR** exports just one trait.  Once this trait is implemented by some struct it gets (25 something) simple and useful methods for simple regex operations of strings.
+Has no dependencies.
 ---
 ## Example
 *please see the documentation for details of methods*
