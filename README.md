@@ -43,7 +43,7 @@ assert_eq!(None,r);
 ```
 
 ##### 23-oct-2021
-> This is very simple but useful crate. Main purpose of this package is for teaching and educational purposes. 
+> This is very simple but useful crate. Main purpose of this library is for teaching and educational purposes. 
 > All the documents and tests are well maintained. Incase of any problem please contact me and I will take care of it. 
 > You are encouraged to look at the code and point out any problems or errors. **I will add features only if they are very valid**.
 ---
