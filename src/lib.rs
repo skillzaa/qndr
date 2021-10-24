@@ -123,11 +123,26 @@ pub trait Qndr {
         result
     }  
     //=============// Caps //==================    
-    fn no_caps(&self , sample:String )->Option<bool>{
-        todo!();
+    ///This function will return None even if a single char is found
+    /// not of a lower case alphabet.
+    /// Even a single symbols like ?, ! , & etc will trigger a None 
+    fn no_caps(&self , sample:&String )->Option<bool>{
+        for i in sample.chars(){
+            if i.is_ascii_uppercase() {return None}
+        }
+        Some(true)
     }
-    fn only_caps(&self , sample:String )->Option<bool>{
-        todo!();
+    /// The data presented to this function should be **alphabatic**
+    /// and in all caps. If any char found that is not a **capital alphabet** the function will return None.    
+    ///This function looks for any non capital alphabet in the sample.
+    ///Even if it finds one non capital char it will return None.
+    /// The function will return None unless the sample string is entirely comprised if *ABCDEFGHIJKLMNOPQRSTUVWXYZ*
+
+    fn only_caps(&self , sample:&String )->Option<bool>{
+        for i in sample.chars(){
+            if i.is_ascii_lowercase() {return None}
+        }
+        Some(true)
     }
 
     //=============// Begins and Ends //================== 
