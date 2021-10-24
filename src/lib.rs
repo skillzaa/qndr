@@ -140,7 +140,7 @@ pub trait Qndr {
 
     fn only_caps(&self , sample:&String )->Option<bool>{
         for i in sample.chars(){
-            if i.is_ascii_lowercase() {return None}
+            if !i.is_ascii_uppercase() {return None}
         }
         Some(true)
     }
