@@ -221,17 +221,21 @@ pub trait Qndr {
         let last:char = sample.chars().rev().nth(0).unwrap();
         if last.is_alphabetic() { return Some(true) } else { return None };
     }
-    
+    /// This function checks if the sample string begins with an 
+    /// alphanumeric or not.
     fn begin_with_alphanumeric(&self , sample:&String )->Option<bool>{
         let first:char = sample.chars().nth(0).unwrap();
         if first.is_alphanumeric() { return Some(true) } else { return None };
     }
+    /// This function checks if the sample string ends with an 
+    /// alphanumeric or not.
     fn end_with_alphanumeric(&self , sample:&String )->Option<bool>{
         let last:char = sample.chars().rev().nth(0).unwrap();
         if last.is_alphanumeric() { return Some(true) } else { return None };
     }
        
     //=============// Misc //================== 
+    /// This fn converts a &String into a Vec of chars
     fn string_to_vec (&self,incomming:&String)->Vec<char>{
         let mut chars:Vec<char> = Vec::new();
             for i in incomming.chars() {
@@ -239,9 +243,10 @@ pub trait Qndr {
             }
         chars
     }
-    // fn is_valid_url(&self , sample:&String )->Option<bool>{
-    //     todo!();
-    // }
+    
+    /// This function will check the provided sample &String and check 
+    /// that it should **only** contain the provided characters. 
+    /// No Tests created yet!!!!
     fn check_string_for_allowed_chars(&self,data:&String,allowed_chars:&String)->Option<bool>{
         for i in data.chars(){
                 match allowed_chars.contains(i){
@@ -251,10 +256,12 @@ pub trait Qndr {
             }
         Some(true)
     }
-    fn remove_chars(&self,large_string:&String,to_be_sub:&String)->String{
+    /// This function will remove all characters from the sample 
+    /// string provided by the second argument.
+    fn remove_chars(&self,sample:&String,subtract:&String)->String{
         let mut result:String = String::from("");
-        for i in large_string.chars(){
-            if !to_be_sub.contains(i){
+        for i in sample.chars(){
+            if !subtract.contains(i){
                 let j = i.clone();
                 result.push(j); 
             }
