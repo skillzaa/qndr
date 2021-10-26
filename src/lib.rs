@@ -83,8 +83,8 @@ pub trait Qndr {
         alphanumeric    
     }
     //=============// Get Non //==================    
-    /// This fn takes a string by ref and return (as a new string) all
-    /// the non alphabets chars .
+    /// This fn takes a string by ref and returns (as a new string) all
+    /// the **non alphabets** chars .
     fn get_non_alphabets(&self,sample:&String )->String{
         let mut non_alphabets = String::from(""); 
         for c in sample.chars() { 
@@ -96,6 +96,8 @@ pub trait Qndr {
         }
         non_alphabets    
     }
+    /// This fn takes a string by ref and returns (as a new string) 
+    /// all the non *Numerical* chars .
     fn get_non_numbers(&self,sample:&String )->String{
         let mut numbers = String::from(""); 
         for c in sample.chars() { 
@@ -107,6 +109,8 @@ pub trait Qndr {
         }
         numbers    
     }
+    /// This fn takes a string by ref and returns (as a new string) 
+    /// all the non *Alpha-Numeric* chars.
     fn get_non_alphanumeric(&self,sample:&String )->String{
         let mut non_alphanumeric = String::from(""); 
         for c in sample.chars() { 
@@ -120,12 +124,22 @@ pub trait Qndr {
     }
     
     //=============// With Symbols //==================    
+    /// We use this fn if we want to allow just numbers and few
+    /// selected symbols e.g ! , @ etc. It takes a &String 
+    /// (the sample string) and another &String with allowed symbols.
+    /// It will return true only of the sample string has only
+    /// numbers and the allowed symbols provided.
     fn numbers_with_symbols(&self,sample:&String,allowed_symbols:&String)->Option<bool>{
       let just_numbers = self.get_numbers(&sample);
       let just_symbols = self.remove_chars(&sample , &just_numbers);
       let result = self.check_string_for_allowed_chars(&just_symbols,&allowed_symbols);
       result
     }
+    /// We use this fn if we want to allow just alphabets and few
+    /// selected symbols e.g ! , @ etc. It takes a &String 
+    /// (the sample string) and another &String with allowed symbols.
+    /// It will return true only of the sample string has only
+    /// alphabets and the allowed symbols provided.
 
     fn alphabets_with_symbols(&self , sample:&String,allowed_symbols:&String )->Option<bool>{
         let non_alpha = self.get_non_alphabets(&sample);
@@ -140,9 +154,9 @@ pub trait Qndr {
         result
     }  
     //=============// Caps //==================    
-    ///This function will return None even if a single char is found
-    /// not of a lower case alphabet.
-    /// Even a single symbols like ?, ! , & etc will trigger a None 
+    /// This function will return None even if a single Capital
+    /// character is found in the provided sample &String.
+    /// *Any character other than a capital case alphabet is OK* 
     fn no_caps(&self , sample:&String )->Option<bool>{
         for i in sample.chars(){
             if i.is_ascii_uppercase() {return None}
@@ -150,10 +164,12 @@ pub trait Qndr {
         Some(true)
     }
     /// The data presented to this function should be **alphabatic**
-    /// and in all caps. If any char found that is not a **capital alphabet** the function will return None.    
+    /// and in all caps. If any char found that is not a **capital
+    /// alphabet** the function will return None.    
     ///This function looks for any non capital alphabet in the sample.
     ///Even if it finds one non capital char it will return None.
-    /// The function will return None unless the sample string is entirely comprised if *ABCDEFGHIJKLMNOPQRSTUVWXYZ*
+    /// The function will return None unless the sample string is 
+    /// entirely comprising of *ABCDEFGHIJKLMNOPQRSTUVWXYZ*
 
     fn only_caps(&self , sample:&String )->Option<bool>{
         for i in sample.chars(){
@@ -164,30 +180,48 @@ pub trait Qndr {
 
     //=============// Begins and Ends //================== 
     
+    /// This function checks if the sample string begins with the 
+    /// provided character or not.
     fn begin_with(&self , sample:&String,begin_char:char )->Option<bool>{
         let first:char = sample.chars().nth(0).unwrap();
         if first == begin_char { return Some(true)}else{return None}
     }
+    /// This function checks if the sample string ends with the 
+    /// provided character or not.
+
     fn end_with(&self , sample:&String,end_char:char )->Option<bool>{
         let last:char = sample.chars().rev().nth(0).unwrap();
         if last == end_char {return Some(true)}else{return None}
     }
+    /// This function checks if the sample string begins with a 
+    /// number or not.
+
     fn begin_with_number(&self , sample:&String )->Option<bool>{
         let first:char = sample.chars().nth(0).unwrap();
         if first.is_numeric() { return Some(true) } else { return None };
     }
+    /// This function checks if the sample string ends with a 
+    /// number or not.
+
     fn end_with_number(&self , sample:&String )->Option<bool>{
         let last:char = sample.chars().rev().nth(0).unwrap();
         if last.is_numeric() { return Some(true) } else { return None };
     }
+    /// This function checks if the sample string begins with an 
+    /// alphabet or not.
+
     fn begin_with_alphabet(&self , sample:&String )->Option<bool>{
         let first:char = sample.chars().nth(0).unwrap();
         if first.is_alphabetic() { return Some(true) } else { return None };
     }
+
+    /// This function checks if the sample string begins with an 
+    /// alphabet or not.
     fn end_with_alphabet(&self , sample:&String )->Option<bool>{
         let last:char = sample.chars().rev().nth(0).unwrap();
         if last.is_alphabetic() { return Some(true) } else { return None };
     }
+    
     fn begin_with_alphanumeric(&self , sample:&String )->Option<bool>{
         let first:char = sample.chars().nth(0).unwrap();
         if first.is_alphanumeric() { return Some(true) } else { return None };
