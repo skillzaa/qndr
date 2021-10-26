@@ -1,14 +1,11 @@
 use qndr::Qndr;
 #[derive(Debug)]
-struct Abc {
-    name:String,
-}
+
+struct Abc { }
 
 impl Abc {
     fn new()->Abc{
-        Abc {
-            name: String::from("bbb"),
-        }
+        Abc {}
     }
 }
 impl Qndr for Abc {}

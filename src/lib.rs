@@ -1,6 +1,9 @@
 
 pub trait Qndr {
     //=============// Allow //==================
+    /// This fn takes a string (by ref) and will check to see that  
+    /// the string should only consist of numerical chars.
+    /// The fn will return false even if one non-numeric char found
     fn allow_numbers_only(&self , sample:&String )->Option<bool>{
         for c in sample.chars() { 
             let r = c.is_numeric();
@@ -11,6 +14,10 @@ pub trait Qndr {
         }
         Some(true)
     }
+    /// This fn takes a string (by ref) and will check to see that  
+    /// the string should only consist of alpha-numerical chars.
+    /// The fn will return false even if one non-alpha-numerical char 
+    /// found.    
     fn allow_alphanumeric_only(&self , sample:&String )->Option<bool>{
         for c in sample.chars() { 
             let r = c.is_alphanumeric();
@@ -21,6 +28,9 @@ pub trait Qndr {
         }
         Some(true)
     }
+     /// This fn takes a string (by ref) and will check to see that  
+    /// the string should only consist of alphabets.
+    /// The fn will return false even if one non-alphabetic char found
     fn allow_alphabets_only(&self , sample:&String )->Option<bool>{
         for c in sample.chars() { 
             let r = c.is_alphabetic();
@@ -33,6 +43,8 @@ pub trait Qndr {
     }
 
     //=============// Get //==================
+    /// This fn takes a string by ref and return (as a new string)all
+    /// the alphabetic chars.
     fn get_alphabets(&self,sample:&String )->String{
         let mut alphabets = String::from(""); 
         for c in sample.chars() { 
@@ -44,6 +56,8 @@ pub trait Qndr {
         }
         alphabets    
     }
+    /// This fn takes a string by ref and return (as a new string)all
+    /// the numeric chars.
     fn get_numbers(&self,sample: &String)->String{
         let mut numbers = String::from(""); 
         for c in sample.chars() { 
@@ -55,6 +69,8 @@ pub trait Qndr {
         }
         numbers    
     }
+    /// This fn takes a string by ref and return (as a new string)all
+    /// the alpha-numeric chars.
     fn get_alphanumeric(&self,sample:&String )->String{
         let mut alphanumeric = String::from(""); 
         for c in sample.chars() { 
@@ -66,8 +82,9 @@ pub trait Qndr {
         }
         alphanumeric    
     }
-    
     //=============// Get Non //==================    
+    /// This fn takes a string by ref and return (as a new string) all
+    /// the non alphabets chars .
     fn get_non_alphabets(&self,sample:&String )->String{
         let mut non_alphabets = String::from(""); 
         for c in sample.chars() { 

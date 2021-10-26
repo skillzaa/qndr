@@ -2,6 +2,8 @@
 ---
 >Simple and useful methods for simple String / Regex operations.
 ---
+> [Documentation](https://docs.rs/qndr)
+---
 **QNDR** exports just one trait.  Once this trait is implemented by some struct it gets (25 something) simple and useful methods for simple regex operations of strings.
 Has no dependencies.
 ---
@@ -9,15 +11,11 @@ Has no dependencies.
 *please see the documentation for details of methods*
 ```rust
 use qndr::Qndr;
-struct Abc {
-    name:String,
-}
+struct Abc {}
 
 impl Abc {
     fn new()->Abc{
-        Abc {
-            name: String::from("bbb"),
-        }
+        Abc {}
     }
 }
 
