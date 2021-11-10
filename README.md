@@ -1,43 +1,33 @@
 # QNDR - Quick and Dirty Regex
 ---
->Simple and useful methods for simple String / Regex operations.
+>Simple and useful methods for simple Regex operations.
 ---
 > [Documentation](https://docs.rs/qndr)
 ---
-**QNDR** exports just one trait.  Once this trait is implemented by some struct it gets (25 something) simple and useful methods for simple regex operations of strings.
-Has no dependencies.
+**QNDR** exports (25 something) simple and useful methods for simple regex operations.
+This library has no dependencies.
 ---
 ## Example
 *please see the documentation for details of methods*
 ```rust
-use qndr::Qndr;
-struct Abc {}
-
-impl Abc {
-    fn new()->Abc{
-        Abc {}
-    }
-}
-
-// This is all the magic you need!!!!
-impl Qndr for Abc {}
+use qndr;
 
 fn main(){
-let a = Abc::new();
-let result_a = a.begin_with_alphanumeric(&String::from("!!!!Hayyy"));
-assert_eq!(None,r);
+let result_a = qndr::begin_with_alphanumeric(&String::from("!!!!Hayyy"));
+assert_eq!(false,result_a);
 
-let result_b = a.begin_with_alphabet(&String::from("_1234?"));
-assert_eq!(None,r);
+let result_b = qndr::begin_with_alphabet(&String::from("_1234?"));
+assert_eq!(false,result_b);
 
-let r = a.allow_alphabets_only(&String::from("0123456789"));
-assert_eq!(None,r);
+let result_c = qndr::allow_alphabets_only(&String::from("0123456789"));
+assert_eq!(false,result_c);
 
-let r = a.allow_alphanumeric_only(&String::from(" "));
-assert_eq!(None,r);
+let result_d = qndr::allow_alphanumeric_only(&String::from(" "));
+assert_eq!(false,result_d);
 
-
+println!("All operations completed...");
 }
+
 ```
 
 ##### 23-oct-2021
